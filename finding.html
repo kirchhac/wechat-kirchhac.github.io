@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>yoli</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <link href="https://cdn.bootcss.com/weui/1.1.1/style/weui.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      background-color: #F3F3F3
+    }
+
+  </style>
+  <script type="text/javascript">
+  var imgurl="https://wechat.yolichat.com/static/assets/logo.png"
+  var text="Your class is about to begin...";
+
+    window.onload = function() {
+    document.getElementById("btn-close").onclick = function() {
+        window.location.replace("https://www.messenger.com/closeWindow/?image_url=" + imgurl + "&display_text=" + text);
+    }
+      $.post( "../searchtutor", function(data) {
+          console.log("Searching for tutors");
+          setTimeout(function(){ 
+            console.log("Found a tutor");
+            $.post( "../startclass", function(data) {
+              console.log("Redirect now");
+              window.location.replace("https://www.messenger.com/closeWindow/?image_url=" + imgurl + "&display_text=" + text);
+            });
+          }, 3000);  
+       });
+     }
+  </script>
+
+  <style type="text/css">
+    .run-animation {
+  -webkit-animation-name: wobble;
+  -moz-animation-name: wobble;
+  -o-animation-name: wobble;
+  -ms-animation-name: wobble;
+  animation-name: wobble;
+  -webkit-animation-duration: 4s;
+  -moz-animation-duration: 4s;
+  -o-animation-duration: 4s;
+  -ms-animation-duration: 4s;
+  animation-duration: 4s; /*动画持续时间*/
+  -webkit-animation-timing-function: ease-in;
+  -moz-animation-timing-function: ease-in;
+  -o-animation-timing-function: ease-in;
+  -ms-animation-timing-function: ease-in;
+  animation-timing-function: ease-in; /*动画频率，和transition-timing-function是一样的*/
+  -webkit-animation-delay: 0s;
+  -moz-animation-delay: 0s;
+  -o-animation-delay: 0s;
+  -ms-animation-delay: 0s;
+  animation-delay: 0s; /*动画延迟时间*/
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; /*定义循环资料，infinite为无限次*/
+  -webkit-animation-direction: normal;
+  -moz-animation-direction: normal;
+  -o-animation-direction: normal;
+  -ms-animation-direction: normal;
+  animation-direction: normal; /*定义动画方式*/
+}
+.run-animation-2 {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -o-animation-delay: 1s;
+  -ms-animation-delay: 1s;
+  animation-delay: 1s; /*动画延迟时间*/
+}
+.run-animation-3 {
+  -webkit-animation-delay: 2s;
+  -moz-animation-delay: 2s;
+  -o-animation-delay: 2s;
+  -ms-animation-delay: 2s;
+  animation-delay: 2s; /*动画延迟时间*/
+}
+.run-animation-4 {
+  -webkit-animation-delay: 3s;
+  -moz-animation-delay: 3s;
+  -o-animation-delay: 3s;
+  -ms-animation-delay: 3s;
+  animation-delay: 3s; /*动画延迟时间*/
+}
+.run-animation-5 {
+  -webkit-animation-delay: 4s;
+  -moz-animation-delay: 4s;
+  -o-animation-delay: 4s;
+  -ms-animation-delay: 4s;
+  animation-delay: 4s; /*动画延迟时间*/
+}
+.matching-teacher-main {
+  position: relative;
+  text-align: center;
+  width: 20em;
+  height: 20em;
+  margin: 1.5em auto;
+}
+.animation-dian {
+  position: absolute;
+  top: -0.5em;
+  left: -0.5em;
+  border: 2px solid #06b917;
+  -webkit-border-radius: 99999em;
+  border-radius: 99999em;
+  height: 100%;
+  width: 100%;
+  background: #c0ffb3;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+.animation-dian-center {
+  position: absolute;
+  top: -0.5em;
+  left: -0.5em;
+  border: 2px solid #fff;
+  -webkit-border-radius: 99999em;
+  border-radius: 99999em;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  -webkit-transform: scale(0.2);
+  -moz-transform: scale(0.2);
+  -o-transform: scale(0.2);
+  -ms-transform: scale(0.2);
+  transform: scale(0.2);
+}
+.animation-dian-center img {
+  width: 96% !important;
+  hegiht: 96% !important;
+  margin: 2%;
+  -webkit-border-radius: 99999em;
+  border-radius: 99999em;
+}
+.matching-teacher-logo {
+  padding-top: 1em;
+  text-align: center;
+}
+.matching-teacher-logo img {
+  height: 1em;
+  padding: 1em 0 0;
+  margin-bottom: -0.1em;
+}
+.teacher-headpic-list {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.teacher-headpic-list img {
+  position: absolute;
+  -webkit-border-radius: 99999em;
+  border-radius: 99999em;
+}
+@-moz-keyframes wobble {
+  0% {
+    -webkit-transform: scale(0.2);
+    -moz-transform: scale(0.2);
+    -o-transform: scale(0.2);
+    -ms-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+  }
+}
+@-webkit-keyframes wobble {
+  0% {
+    -webkit-transform: scale(0.2);
+    -moz-transform: scale(0.2);
+    -o-transform: scale(0.2);
+    -ms-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+  }
+}
+@-o-keyframes wobble {
+  0% {
+    -webkit-transform: scale(0.2);
+    -moz-transform: scale(0.2);
+    -o-transform: scale(0.2);
+    -ms-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+  }
+}
+@keyframes wobble {
+  0% {
+    -webkit-transform: scale(0.2);
+    -moz-transform: scale(0.2);
+    -o-transform: scale(0.2);
+    -ms-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+  }
+}
+  </style>
+</head>
+
+<body id="main-content">
+<script>
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'Messenger'));
+</script>      
+ <p class="logo" style="    
+    text-align: center;
+    padding: 20px 20px 5px 20px;"><img src="./assets/logo.png"/></p>
+	<div class="matching-teacher-main">
+    <div class="animation-dian run-animation"></div>
+    <div class="animation-dian run-animation run-animation-2"></div>
+    <div class="animation-dian run-animation run-animation-3"></div>
+    <div class="animation-dian run-animation run-animation-4"></div>
+    <div class="animation-dian-center">
+      <img src="./assets/drew_profile.png" style=" width:12em"/>
+    </div>
+    <div class="teacher-headpic-list">
+      <img src="./assets/shashank_1.png" style="width:4.8em;top:10em;left:.2em;"/>
+      <img src="./assets/James_1.png" style="width:6em;top:2.2em;left:14em;"/>
+      <img src="./assets/doug_1.png" style="width:4em;top:.1em;left:1em;"/>
+      <img src="./assets/celeste_1.png" style="width:5em;top:13em;left:15em;"/>
+
+    </div>
+  </div>
+  <section>
+    <h5 class="content-title" style="text-align: center; margin: 0px 0px 10px 0px;">Finding tutor…</h5>
+  </section>
+  <div class="weui-msg__extra-area">
+    <div class="weui-btn-area">
+      <button class="weui-btn weui-btn_primary" id="btn-close" type="button">Exit to Classroom</button>
+    </div>
+  </div>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+
+</body>
+</html>
